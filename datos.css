@@ -1,0 +1,55 @@
+h1 {
+	font-family: inherit;
+    font-weight: 500;
+}
+header{
+	background-color: white;
+}
+header h1{
+	display: inline-block;
+	padding-right: 25px;
+}
+header img{
+	vertical-align: middle;
+	width: 100px;
+}
+.breed{
+	width: 30%;
+	padding: 2%;
+	background-color: rgba(165, 184, 247, 0.5);
+	display: inline-block;
+	max-height: 450px;
+    overflow: scroll;
+	
+}
+.breed p, .subBreed p {
+	display: inline-block;
+	padding-right: 10px;
+	font-family: monospace;
+    font-size: 1.2em;
+}
+.subBreed{
+	padding: 2%;
+	background-color: rgba(165, 184, 247, 0.5);
+	
+}
+.breedImg{
+	padding: 2%;
+	background-color: rgba(165, 184, 247, 0.5);
+    text-align: center;
+	/*display: inline-block;*/
+}
+.breedImg p{
+	display:block;
+}
+#imageDog{
+    max-width: 99%;
+    max-height: 300px;
+}
+.fRight{
+	float: right;
+	width: 62%;
+}
+#contenedor{
+	background-size: cover;
+}
