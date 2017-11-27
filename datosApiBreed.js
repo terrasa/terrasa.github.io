@@ -2,47 +2,49 @@
 
 //__  /api/breeds/list/all  Listado de razas y subrazas
 
-let next = document.getElementById('next');
 let controlVar = true;
+let lastUrl;
+
+/* //
+// Funciona igual dejando fuera la función next, es más facil de entender y no requiere controlVar
+
+let next = document.getElementById('next');
+next.addEventListener("click", async function(){
+	let breedImage = document.getElementById('imageDog');  // se define de nuevo de forma local dentro de la funcion
+	dataImg(lastUrl, breedImage);
+    });
 
 async function dataImg(url, breedImage){
-	let lastUrl = await url;
+	lastUrl = await url;
+	console.log('último url ', lastUrl);
+    let data = await fetch(lastUrl);
+    let dataJson = await data.json();
+	let result = dataJson.message;
+	breedImage.src = result; 
+}*/
+
+// Funciona pero requiere controlVar para ejecutar el evento de next solo la primera vez.
+
+async function dataImg(url, breedImage){
+	lastUrl = url;                    // Si no es global no funciona
 	console.log('último url ', lastUrl);
     let data = await fetch(lastUrl);
     let dataJson = await data.json();
 	let result = dataJson.message;
 	breedImage.src = result; 
     if(controlVar){
+		let breedImg = document.getElementsByClassName('breedImg');
+		let next = document.createElement('p');
+		breedImg[0].appendChild(next);
+		next.innerHTML = 'Siguiente Imagen';
+		//let next = document.getElementById('next');
 		next.addEventListener("click", async function(){
-            dataImg(url, breedImage);
+			console.log('último url dentro del Event ', lastUrl);
+            dataImg(lastUrl, breedImage);
     	});
 		controlVar = !controlVar;
 	}
-}	
-
-
-
-/*async function dataImg(url, breedImage){
-	let lastUrl = await url;
-	console.log('último url ', lastUrl);
-    let data = await fetch(lastUrl);
-    let dataJson = await data.json();
-	let result = dataJson.message;
-    console.log('result: ', result);
-	breedImage.src = result; 
-    if(controlVar){
-		next.addEventListener("click", async function(){
-			let lastUrl = await url;
-			dataImg2();
-    	});
-		controlVar = !controlVar;
-	}
-	console.log('último url antes ', lastUrl);
-	async function dataImg2(){
-		console.log('último url dentro dataimg2 ', lastUrl);
-		await dataImg(lastUrl, breedImage);
-	}
-}	*/
+}
 
 async function dataElement(breed_div, pos, prop){
 	let breed = document.getElementsByClassName(breed_div);
@@ -57,6 +59,11 @@ async function dataElement(breed_div, pos, prop){
     }
 	else{
 		breedImage.src = "dog.png"; 
+		if(controlVar == false){
+			let breedImg = document.getElementsByClassName('breedImg');
+			breedImg[0].removeChild(breedImg[0].childNodes[3]);
+			controlVar = !controlVar;
+		}
 		raza.innerHTML =`La raza seleccionada es: ${prop}, elige una subraza.`;
 		console.log('array subraza pasado: ', pos);
 		console.log("raza pasada: ", prop);
@@ -71,15 +78,6 @@ async function dataElement(breed_div, pos, prop){
 			});
 		});
 	}
-	/*next.addEventListener("click", function(){
-		
-		if(pos.length == 0){
-	   		dataImg(`https://dog.ceo/api/breed/${prop}/ /images/random`, breedImage)
-		}
-		else{
-			dataImg(`https://dog.ceo/api/breed/${prop}/${pos[xxxx]}/images/random`, breedImage)
-		}
-	});*/
 }
 
 async function dataProp(url, breed_div){
