@@ -74,6 +74,7 @@ async function dataElement(breed_div, pos, prop){
 			breedP.innerHTML = pos[index]; // Comillas invertidas `` 
 			console.log('subraza: ', pos[index]);
 			breedP.addEventListener("click", function(){
+                raza.innerHTML =`La raza seleccionada es: ${prop} - ${pos[index]}`;
 				dataImg(`https://dog.ceo/api/breed/${prop}/${pos[index]}/images/random`, breedImage);
 			});
 		});
