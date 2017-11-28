@@ -1,3 +1,5 @@
+(function(){
+
 //___https://dog.ceo/dog-api/_____
 
 //__  /api/breeds/list/all  Listado de razas y subrazas
@@ -110,3 +112,4 @@ async function dataProp(url, breed_div){
 }	
 
 dataProp('https://dog.ceo/api/breeds/list/all', 'breed');
+}())
