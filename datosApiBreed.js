@@ -3,7 +3,7 @@
 //__  /api/breeds/list/all  Listado de razas y subrazas
 
 let controlVar = true;
-let lastUrl;
+//let lastUrl;
 
 /* //
 // Funciona igual dejando fuera la función next, es más facil de entender y no requiere controlVar
