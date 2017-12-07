@@ -1,13 +1,11 @@
-(function(){
-
 //___https://dog.ceo/dog-api/_____
 
 //__  /api/breeds/list/all  Listado de razas y subrazas
 
 let controlVar = true;
-//let lastUrl;
+let lastUrl;
 
-/* //
+/*
 // Funciona igual dejando fuera la función next, es más facil de entender y no requiere controlVar
 
 let next = document.getElementById('next');
@@ -76,7 +74,6 @@ async function dataElement(breed_div, pos, prop){
 			breedP.innerHTML = pos[index]; // Comillas invertidas `` 
 			console.log('subraza: ', pos[index]);
 			breedP.addEventListener("click", function(){
-                raza.innerHTML =`La raza seleccionada es: ${prop} - ${pos[index]}`;
 				dataImg(`https://dog.ceo/api/breed/${prop}/${pos[index]}/images/random`, breedImage);
 			});
 		});
@@ -112,4 +109,3 @@ async function dataProp(url, breed_div){
 }	
 
 dataProp('https://dog.ceo/api/breeds/list/all', 'breed');
-}())
