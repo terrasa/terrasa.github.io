@@ -14,3 +14,5 @@ function showPosition(position) {
     geo.innerHTML = "Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude; 
 }
+
+getLocation();
