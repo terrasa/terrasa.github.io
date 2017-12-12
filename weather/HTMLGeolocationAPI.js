@@ -25,7 +25,7 @@ async function showPosition(position) {
 	console.log( geoPos);
 	console.log('Latitud: ', geoPos.latitude);
 	//return geoPos; // No me funciona fuera. Si quito let si.... y puedo quitar return 
-	dataProp(`http://api.wunderground.com/api/19fc2f8982402035/conditions/astronomy/forecast/q/${geoPos.latitude},${geoPos.longitude}.json`);
+	dataProp(`https://api.wunderground.com/api/19fc2f8982402035/conditions/astronomy/forecast/q/${geoPos.latitude},${geoPos.longitude}.json`);
 	
 	/* Pendiente ApiKey google maps
 	let latlon = position.coords.latitude + "," + position.coords.longitude;
