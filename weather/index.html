@@ -12,15 +12,42 @@
 		<header> 
 			<img src="temperature_icon.png" alt="Logo Weather">
 			<h1>The Weather</h1>
+			<h3>Weather Underground Api</h3>
 		</header>	
-		<article class='geoloc'>	
-		   <h2>Ubicación por latitud y longitud</h2>
-		   <p id ='geo' ></p>
+		<article class='geoloc'>
+			<h2 class='loc'></h2>
+		   	<p id ='geo' class='fontS' ></p>
+		   	<div class="info">
+		   		<p class="weather fontL"></p>
+		   		<p class="weather fontS"></p>
+		   	</div>
+		   	<div class="info">
+		   		<img id='icon_w' src="" alt="icono tiempo">
+		   	</div>
+		   	<div class="info">
+		   		<p>Humedad Relativa</p>		   
+		   		<p class="weather fontL"></p>
+		   	</div>
+		   	<div class="info">
+		   		<p>Vel. Viento</p>
+		   		<p class="weather fontL"></p>
+		  	 </div>
+		   
 		</article>
+		<article class="userFile">
+			Selecciona tu imagen: <input type="file" id="files" name="files[]" multiple />
+			<output id="list"></output>
+	
+		</article>
+		<!-- Pendiente key google maps
+		<div id="mapholder">
+			
+		</div>-->
 		
 		<footer>
 
 		</footer>
 		<script type="text/javascript" src="HTMLGeolocationAPI.js"></script>
+		<script type="text/javascript" src="datosApiWunderground.js"></script>
 	</body>
 </html>

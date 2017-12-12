@@ -1,111 +1,98 @@
-//___https://dog.ceo/dog-api/_____
+//_____https://www.wunderground.com - Weather Underground: Weather Forecast & Reports
 
-//__  /api/breeds/list/all  Listado de razas y subrazas
+const loc = document.getElementsByClassName('loc');
+const weather = document.getElementsByClassName('weather');
+const icon_w = document.getElementById ('icon_w');
 
-let controlVar = true;
-let lastUrl;
 
-/*
-// Funciona igual dejando fuera la función next, es más facil de entender y no requiere controlVar
-
-let next = document.getElementById('next');
-next.addEventListener("click", async function(){
-	let breedImage = document.getElementById('imageDog');  // se define de nuevo de forma local dentro de la funcion
-	dataImg(lastUrl, breedImage);
-    });
-
-async function dataImg(url, breedImage){
-	lastUrl = await url;
-	console.log('último url ', lastUrl);
-    let data = await fetch(lastUrl);
-    let dataJson = await data.json();
-	let result = dataJson.message;
-	breedImage.src = result; 
-}*/
-
-// Funciona pero requiere controlVar para ejecutar el evento de next solo la primera vez.
-
-async function dataImg(url, breedImage){
-	lastUrl = url;                    // Si no es global no funciona
-	console.log('último url ', lastUrl);
-    let data = await fetch(lastUrl);
-    let dataJson = await data.json();
-	let result = dataJson.message;
-	breedImage.src = result; 
-    if(controlVar){
-		let breedImg = document.getElementsByClassName('breedImg');
-		let next = document.createElement('p');
-		breedImg[0].appendChild(next);
-		next.innerHTML = 'Siguiente Imagen';
-		//let next = document.getElementById('next');
-		next.addEventListener("click", async function(){
-			console.log('último url dentro del Event ', lastUrl);
-            dataImg(lastUrl, breedImage);
-    	});
-		controlVar = !controlVar;
+async function iconWeather(icon){
+	
+	if(localStorage.backG_user){
+		document.body.style.backgroundImage = "url("+localStorage.backG_user+")" ;
 	}
-}
-
-async function dataElement(breed_div, pos, prop){
-	let breed = document.getElementsByClassName(breed_div);
-	while(breed[0].childNodes.length > 3){
-			breed[0].removeChild(breed[0].childNodes[3]);
-		}
-	let raza = document.getElementById('raza');
-	let breedImage = document.getElementById('imageDog');
-    if(pos.length == 0){
-        raza.innerHTML =`La raza seleccionada es: ${prop} y no tiene subraza.`;
-		dataImg(`https://dog.ceo/api/breed/${prop}/ /images/random`, breedImage)
-    }
 	else{
-		breedImage.src = "dog.png"; 
-		if(controlVar == false){
-			let breedImg = document.getElementsByClassName('breedImg');
-			breedImg[0].removeChild(breedImg[0].childNodes[3]);
-			controlVar = !controlVar;
-		}
-		raza.innerHTML =`La raza seleccionada es: ${prop}, elige una subraza.`;
-		console.log('array subraza pasado: ', pos);
-		console.log("raza pasada: ", prop);
-		//for(let element = 0; element < pos.length; element++){ en el forEach cambio element por index pos[index]
-		 pos.forEach(function(element,index){
-			let breedP = document.createElement('p');
-			breed[0].appendChild(breedP);
-			breedP.innerHTML = pos[index]; // Comillas invertidas `` 
-			console.log('subraza: ', pos[index]);
-			breedP.addEventListener("click", function(){
-				dataImg(`https://dog.ceo/api/breed/${prop}/${pos[index]}/images/random`, breedImage);
-			});
-		});
-	}
+		document.body.style.backgroundImage = "url("+icon+".jpg)";	
+	} 
+	
 }
 
-async function dataProp(url, breed_div){
-	let breed = document.getElementsByClassName(breed_div);
+async function dataProp(url){
+	
     let data = await fetch(url);
     let dataJson = await data.json();
-	let result = dataJson.message;
-    
-	// con for in Funciona tb
-	/*for(let prop in result){
-		let breedP = document.createElement('p');
-		breed[0].appendChild(breedP);
-		breedP.innerHTML = prop; // Comillas invertidas ``
-		breedP.addEventListener("click", function(){
-			dataElement('subBreed', result[prop], prop)
-		});
+	let result = dataJson.current_observation;
+	console.log('Datos:  ', dataJson);
+	console.log('Temp ºC: ',dataJson.current_observation.temp_c );
+	console.log('Icono: ',dataJson.current_observation.icon_url );
+	console.log('Icon Nombre:  ', result.icon);
+	loc[0].innerHTML=`${result.display_location.full}`;
+	weather[0].innerHTML=`${result.temp_c} <sup>ºC</sup>`;
+	weather[1].innerHTML=`Sensación Térmica ${result.feelslike_c}<sup>ºC</sup>`;
+	weather[2].innerHTML=`${result.relative_humidity} %`;
+	weather[3].innerHTML=`${result.wind_kph} kph`;
+	//Sustituimos la ruta para que sea un svg en vez de un gif
+	let dat_icon_weather = result.icon_url;
+	console.log(dat_icon_weather);
+	let icon_weather = String(dat_icon_weather).replace("/k/", "/v4/");
+	let icon_weather2 = icon_weather.replace(".gif", ".svg");
+	console.log(icon_weather2);
+	icon_w.src= icon_weather2; // `${result.icon_url}`;
+	iconWeather(result.icon); 
+	//iconWeather('rain'); // Para realizar prueba
+	/*if(localStorage.backG_user){
+		document.body.style.backgroundImage = "url("+localStorage.backG_user+")" ;
 	}*/
-    const razas = Object.keys(result);
-    // tengo un array de razas
-    razas.forEach(function(raza,index){
-    	let breedP = document.createElement('p');
-        breed[0].appendChild(breedP);
-        breedP.innerHTML = raza;
-        breedP.addEventListener("click", function(){
-        	console.log(raza," . ",result[raza])
-			dataElement('subBreed', result[raza], raza)
-		});
-	})
+	nombreIcon = result.icon;
 }	
+//http://api.wunderground.com/api/19fc2f8982402035/features/settings/q/query.format
+// dataProp(`http://api.wunderground.com/api/19fc2f8982402035/geolookup/conditions/astronomy/forecast/q/40.553053,-3.6460074.json`);
 
-dataProp('https://dog.ceo/api/breeds/list/all', 'breed');
+// No es necesario datos de geolookup .....
+//dataProp(`http://api.wunderground.com/api/19fc2f8982402035/geolookup/conditions/astronomy/forecast/q/${geoPos.latitude},${geoPos.longitude}.json`);
+
+// Selección de un archivo, ruta local del archivo, guardar ruta en localStorage
+
+// Check for the various File API support. 
+if (window.File && window.FileReader && window.FileList && window.Blob) {  //En nuestro caso solo file.... && window.FileReader && window.FileList && window.Blob
+  // Great success! All the File APIs are supported.
+} else {
+  alert('The File APIs are not fully supported in this browser.');
+}
+
+function handleFileSelect(evt) {
+    let files = evt.target.files; // FileList object
+	console.log(files);
+	//console.log(files.FileList.0.name);
+
+    // Loop through the FileList and render image files as thumbnails.
+ 	for (let i = 0, f; f = files[i]; i++) {
+    	// Only process image files.
+      	if (!f.type.match('image.*')) {
+        	continue;
+      	}
+		console.log(f);
+      	let reader = new FileReader();
+
+      	// Closure to capture the file information.
+      	reader.onload = (function(theFile) {	
+        	return function(e) {
+				// Render thumbnail.
+        		/*let span = document.createElement('span');
+          		span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+				document.getElementById('list').insertBefore(span, null);*/
+				document.body.style.backgroundImage = "url("+e.target.result+")" ;
+				localStorage.setItem("backG_user", e.target.result);
+				//console.log('Dentro de ',e.target.result)
+        	};
+      	})(f);
+
+      	// Read in the image file as a data URL.
+      	reader.readAsDataURL(f);
+		console.log(reader);
+    }
+  }
+
+ document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+// Limpiar localStorage   //localStorage.clear();

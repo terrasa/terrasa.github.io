@@ -1,23 +1,77 @@
+/** { outline: 2px dotted red } 
+* * { outline: 2px dotted green }  
+* * * { outline: 2px dotted orange }  
+* * * * { outline: 2px dotted blue }  
+* * * * * { outline: 1px solid red }  
+* * * * * * { outline: 1px solid green }  
+* * * * * * * { outline: 1px solid orange }  
+* * * * * * * * { outline: 1px solid blue }*/
+
+*{
+	margin: 0;
+ 	 padding: 0;
+ 	 border: 0;
+ }
+body{
+	background-size: cover;
+	background-color: white;
+}
 h1 {
 	font-family: inherit;
     font-weight: 500;
 }
 header{
 	background-color: white;
+	padding-bottom: 6px;
+    margin-bottom: 5px;
 }
 header h1{
 	display: inline-block;
 	padding-right: 25px;
+}
+header h3{ /*Guarreria...*/
+	position: relative;
+    top: -30px;
+    left: 100px;
 }
 header img{
 	vertical-align: middle;
 	width: 100px;
 }
 .geoloc{
+	padding-top: 15px;
 	width: 96%;
 	margin: 0 auto;
 	text-align: center;
-	background-color: lightgrey;
+	background-color: rgba(2, 2, 2, 0.2);
+}
+.info{
+	width: 45%;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 5px auto;
+}
+.info p {
+	padding: 5px 0;
+} 
+.fontS{
+	font-size: 0.9em;
+}
+.fontL{
+	font-size: 1.3em;
+	color: white;
+    font-weight: bold;
+}
+.weather{
+	
+}
+#icon_w{
+	width: 80%;
+	-webkit-animation: parpadeo 1.5s infinite;
+	animation: parpadeo 1.5s infinite;
+}
+.userFile{
+	    padding: 15px;
 }
 /* .project div {
 	width: 80%;
@@ -29,3 +83,45 @@ header img{
 	max-height: 128px;
 }
 */
+/*.thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }*/
+
+/*Animaciones Keyframes*/
+
+@-webkit-keyframes parpadeo {
+	0%, 100% {
+		opacity: 1.0;
+	}
+	50% {
+		opacity: 0.3;
+	}
+}
+@keyframes parpadeo {
+	0%, 100% {
+		opacity: 1.0;
+	}
+	50% {
+		opacity: 0.3;
+	}
+}
+
+
+/*Media Querys*/
+@media screen and (max-height:450px){
+	    
+}
+
+
+@media screen and (min-width:431px){
+	.info{
+		width: 20%;
+    	margin: 0 2%;
+	}
+	#icon_w{
+		width: 90%;
+	}
+	
+}
