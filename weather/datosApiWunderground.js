@@ -70,7 +70,7 @@ function handleFileSelect(evt) {
       	if (!f.type.match('image.*')) {
         	continue;
       	}
-		console.log(f);
+		console.log('QUE ERES???>>>>',f);
       	let reader = new FileReader();
 
       	// Closure to capture the file information.
