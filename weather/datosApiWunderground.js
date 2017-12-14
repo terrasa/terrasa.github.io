@@ -62,8 +62,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {  //En 
 function handleFileSelect(evt) {
     let files = evt.target.files; // FileList object
 	console.log(files);
-	//console.log(files.FileList.0.name);
-
+	
     // Loop through the FileList and render image files as thumbnails.
  	for (let i = 0, f; f = files[i]; i++) {
     	// Only process image files.
