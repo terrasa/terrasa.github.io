@@ -37,23 +37,18 @@ async function dataProp(url){
 	let icon_weather2 = icon_weather.replace(".gif", ".svg");
 	console.log(icon_weather2);
 	icon_w.src= icon_weather2; // `${result.icon_url}`;
-	iconWeather(result.icon); 
-	//iconWeather('rain'); // Para realizar prueba
+	//iconWeather(result.icon); 
+	iconWeather('rain'); // Para realizar prueba
 	/*if(localStorage.backG_user){
 		document.body.style.backgroundImage = "url("+localStorage.backG_user+")" ;
 	}*/
 	nombreIcon = result.icon;
 }	
-//http://api.wunderground.com/api/19fc2f8982402035/features/settings/q/query.format
-// dataProp(`http://api.wunderground.com/api/19fc2f8982402035/geolookup/conditions/astronomy/forecast/q/40.553053,-3.6460074.json`);
-
-// No es necesario datos de geolookup .....
-//dataProp(`http://api.wunderground.com/api/19fc2f8982402035/geolookup/conditions/astronomy/forecast/q/${geoPos.latitude},${geoPos.longitude}.json`);
 
 // Selección de un archivo, ruta local del archivo, guardar ruta en localStorage
 
 // Check for the various File API support. 
-if (window.File && window.FileReader && window.FileList && window.Blob) {  //En nuestro caso solo file.... && window.FileReader && window.FileList && window.Blob
+if (window.File && window.FileReader && window.FileList && window.Blob) {  
   // Great success! All the File APIs are supported.
 } else {
   alert('The File APIs are not fully supported in this browser.');
@@ -82,9 +77,8 @@ function handleFileSelect(evt) {
 				document.getElementById('list').insertBefore(span, null);*/
 				document.body.style.backgroundImage = "url("+e.target.result+")" ;
 				localStorage.setItem("backG_user", e.target.result);
-				//console.log('Dentro de ',e.target.result)
         	};
-      	})(f);
+      	});
 
       	// Read in the image file as a data URL.
       	reader.readAsDataURL(f);

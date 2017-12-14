@@ -36,7 +36,6 @@ async function showPosition(position) {
     document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";*/
 }
 
-// Pte comprobar si el movil tiene activado ubicación, si desactivado. No pregunta si permite la ubicación y no calcula por WIFI ni Advierte que se ha detenido
 
 async function showError(error) {
     switch(error.code) {
