@@ -29,9 +29,9 @@ header h1{
 	display: inline-block;
 	padding-right: 25px;
 }
-header h3{ /*Guarreria...*/
-	position: relative;
-    top: -30px;
+header h3{ /*Revisar ...*/
+	position: absolute;
+    top: 74px;
     left: 100px;
 }
 header img{
