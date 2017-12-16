@@ -29,9 +29,10 @@ h1 {
     font-weight: 500;
 }
 header{
-	background-color: white;
+	background-color: rgba(255, 255, 255, 0.5);
 	padding-bottom: 6px;
     margin-bottom: 5px;
+	color: #ffff;
 }
 header h1{
 	display: inline-block;
@@ -39,12 +40,13 @@ header h1{
 }
 header h3{ /*Revisar ...*/
 	position: absolute;
-    top: 74px;
-    left: 100px;
+    top: 35;
+    left: 58px;
 }
 header img{
+	padding-top: 6px;
 	vertical-align: middle;
-	width: 100px;
+	width: 55px;
 }
 .geoloc{
 	padding-top: 15px;
@@ -52,6 +54,7 @@ header img{
 	margin: 0 auto;
 	text-align: center;
 	background-color: rgba(2, 2, 2, 0.2);
+	color: white;
 }
 .info{
 	width: 45%;
@@ -64,10 +67,11 @@ header img{
 } 
 .fontS{
 	font-size: 0.9em;
+	
 }
 .fontL{
 	font-size: 1.3em;
-	color: white;
+	
     font-weight: bold;
 }
 .weather{
@@ -80,6 +84,7 @@ header img{
 }
 .userFile{
 	    padding: 15px;
+	color: #FFFFFF;
 }
 /* .project div {
 	width: 80%;
@@ -124,6 +129,14 @@ header img{
 
 
 @media screen and (min-width:431px){
+	header img{
+	width: 75px;
+	}
+	
+	header h3{ 
+    top: 55px;
+    left: 82px;
+	}
 	.info{
 		width: 20%;
     	margin: 0 2%;

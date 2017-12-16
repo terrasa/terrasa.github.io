@@ -37,8 +37,8 @@ async function dataProp(url){
 	let icon_weather2 = icon_weather.replace(".gif", ".svg");
 	console.log(icon_weather2);
 	icon_w.src= icon_weather2; // `${result.icon_url}`;
-	//iconWeather(result.icon); 
-	iconWeather('rain'); // Para realizar prueba
+	iconWeather(result.icon); 
+	//iconWeather('rain'); // Para realizar prueba
 	/*if(localStorage.backG_user){
 		document.body.style.backgroundImage = "url("+localStorage.backG_user+")" ;
 	}*/
