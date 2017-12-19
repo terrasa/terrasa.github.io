@@ -78,7 +78,7 @@ function handleFileSelect(evt) {
 				document.body.style.backgroundImage = "url("+e.target.result+")" ;
 				localStorage.setItem("backG_user", e.target.result);
         	};
-      	});
+      	})(f);
 
       	// Read in the image file as a data URL.
       	reader.readAsDataURL(f);

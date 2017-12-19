@@ -33,15 +33,12 @@ header{
 	padding-bottom: 6px;
     margin-bottom: 5px;
 	color: #ffff;
+	text-align: center;
 }
-header h1{
+header div{
 	display: inline-block;
-	padding-right: 25px;
-}
-header h3{ /*Revisar ...*/
-	position: absolute;
-    top: 35px;
-    left: 58px;
+	vertical-align: middle;
+	text-align: left;
 }
 header img{
 	padding-top: 6px;
@@ -51,7 +48,7 @@ header img{
 .geoloc{
 	padding-top: 15px;
 	width: 96%;
-	margin: 0 auto;
+	margin: 2% auto;
 	text-align: center;
 	background-color: rgba(2, 2, 2, 0.2);
 	color: white;
@@ -86,15 +83,39 @@ header img{
 	    padding: 15px;
 	color: #FFFFFF;
 }
+
+/*.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #f2fadc;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #f2fadc;
+	box-shadow:inset 0px 1px 0px 0px #f2fadc;
+	background-color:#f8faf5;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #b2b8ad;
+	display:inline-block;
+	cursor:pointer;
+	color:#757d6f;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ced9bf;
+}
+.myButton:hover {
+	background-color:#9ba892;
+	}*/
+
 /* .project div {
 	width: 80%;
 	margin: 0 auto;
 	text-align: center;
-}
+	}
 .project div img{
 	max-width: 100%;
 	max-height: 128px;
-}
+	}
 */
 /*.thumb {
     height: 75px;
@@ -133,9 +154,8 @@ header img{
 	width: 75px;
 	}
 	
-	header h3{ 
-    top: 55px;
-    left: 82px;
+	header { 
+    text-align: left;
 	}
 	.info{
 		width: 20%;

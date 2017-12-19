@@ -12,8 +12,10 @@
 	<body> 
 		<header> 
 			<img src="temperature_icon.png" alt="Logo Weather">
-			<h1>The Weather</h1>
-			<h3>Weather Underground Api</h3>
+			<div>
+				<h1>The Weather</h1>
+				<h3>Weather Underground Api</h3>
+			</div>
 		</header>	
 		<article class='geoloc'>
 			<h2 class='loc'></h2>
@@ -36,7 +38,7 @@
 		   
 		</article>
 		<article class="userFile">
-			Selecciona tu imagen: <input type="file" id="files" name="files[]" multiple />
+		<input type="file" class="myButton" id="files" name="files[]" multiple />
 			<output id="list"></output>
 	
 		</article>
