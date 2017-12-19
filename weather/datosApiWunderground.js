@@ -39,9 +39,6 @@ async function dataProp(url){
 	icon_w.src= icon_weather2; // `${result.icon_url}`;
 	iconWeather(result.icon); 
 	//iconWeather('rain'); // Para realizar prueba
-	/*if(localStorage.backG_user){
-		document.body.style.backgroundImage = "url("+localStorage.backG_user+")" ;
-	}*/
 	nombreIcon = result.icon;
 }	
 
@@ -64,17 +61,11 @@ function handleFileSelect(evt) {
       	if (!f.type.match('image.*')) {
         	continue;
       	}
-		console.log('QUE ERES???>>>>',f);
       	let reader = new FileReader();
 
       	// Closure to capture the file information.
       	reader.onload = (function(theFile) {	
         	return function(e) {
-				// Render thumbnail.
-        		/*let span = document.createElement('span');
-          		span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                            '" title="', escape(theFile.name), '"/>'].join('');
-				document.getElementById('list').insertBefore(span, null);*/
 				document.body.style.backgroundImage = "url("+e.target.result+")" ;
 				localStorage.setItem("backG_user", e.target.result);
         	};
