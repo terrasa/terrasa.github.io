@@ -8,7 +8,7 @@ let controlVar = true;
 let breed_1 = document.getElementsByClassName('breed');
 let fRight = document.getElementsByClassName('fRight');
 let breedImage = document.getElementById('imageDog');
-subrazaControl = false;
+let subrazaControl = false;
 
 //let lastUrl;
 
@@ -140,11 +140,12 @@ async function dataProp(url, breed_div){
 		});
 	})
 }
+/* // Pte cerrar imagen cuando movil
 let cerrar = document.getElementById('cerrar');
 cerrar.addEventListener
 async function cerrar(){
 	
-}
+}*/
 
 dataProp('https://dog.ceo/api/breeds/list/all', 'breed');
 }())
