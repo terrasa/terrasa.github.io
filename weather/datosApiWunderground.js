@@ -28,7 +28,7 @@ async function dataProp(url){
 	loc[0].innerHTML=`${result.display_location.full}`;
 	weather[0].innerHTML=`${result.temp_c} <sup>ºC</sup>`;
 	weather[1].innerHTML=`Sensación Térmica ${result.feelslike_c}<sup>ºC</sup>`;
-	weather[2].innerHTML=`${result.relative_humidity} %`;
+	weather[2].innerHTML=`${result.relative_humidity} `;
 	weather[3].innerHTML=`${result.wind_kph} kph`;
 	//Sustituimos la ruta para que sea un svg en vez de un gif
 	let dat_icon_weather = result.icon_url;

@@ -5,6 +5,11 @@
 //__  /api/breeds/list/all  Listado de razas y subrazas
 
 let controlVar = true;
+let breed_1 = document.getElementsByClassName('breed');
+let fRight = document.getElementsByClassName('fRight');
+let breedImage = document.getElementById('imageDog');
+subrazaControl = false;
+
 //let lastUrl;
 
 /* //
@@ -46,18 +51,42 @@ async function dataImg(url, breedImage){
     	});
 		controlVar = !controlVar;
 	}
+	await vSize();
 }
-
+	
+async function vSize(){
+	let w = await window.innerWidth;
+	let imgBreed= await breedImage.src;
+	console.log(imgBreed);
+	console.log(breedImage.src);
+	if(w>576){
+		breed_1[0].style.display = 'inline-block';	
+		fRight[0].style.display = 'inline';		
+		}
+	else if( subrazaControl || imgBreed.indexOf('dog.png')===-1 ){ 
+		breed_1[0].style.display = 'none';	
+		fRight[0].style.display = 'inline';	
+		}
+	else{
+		breed_1[0].style.display = 'inline-block';	
+		fRight[0].style.display = 'none';
+	}
+}
+	
+window.addEventListener('resize', vSize);
+	
 async function dataElement(breed_div, pos, prop){
 	let breed = document.getElementsByClassName(breed_div);
 	while(breed[0].childNodes.length > 3){
 			breed[0].removeChild(breed[0].childNodes[3]);
 		}
 	let raza = document.getElementById('raza');
-	let breedImage = document.getElementById('imageDog');
+	
     if(pos.length == 0){
-        raza.innerHTML =`La raza seleccionada es: ${prop} y no tiene subraza.`;
+		subrazaControl = false;
+        raza.innerHTML =`Raza seleccionada: ${prop}`;
 		dataImg(`https://dog.ceo/api/breed/${prop}/ /images/random`, breedImage)
+		
     }
 	else{
 		breedImage.src = "dog.png"; 
@@ -66,20 +95,21 @@ async function dataElement(breed_div, pos, prop){
 			breedImg[0].removeChild(breedImg[0].childNodes[3]);
 			controlVar = !controlVar;
 		}
-		raza.innerHTML =`La raza seleccionada es: ${prop}, elige una subraza.`;
+		subrazaControl = true;
+		raza.innerHTML =`Raza seleccionada: ${prop}, subraza...`;
 		console.log('array subraza pasado: ', pos);
 		console.log("raza pasada: ", prop);
-		//for(let element = 0; element < pos.length; element++){ en el forEach cambio element por index pos[index]
-		 pos.forEach(function(element,index){
+		pos.forEach(function(element,index){
 			let breedP = document.createElement('p');
 			breed[0].appendChild(breedP);
 			breedP.innerHTML = pos[index]; // Comillas invertidas `` 
 			console.log('subraza: ', pos[index]);
 			breedP.addEventListener("click", function(){
-                raza.innerHTML =`La raza seleccionada es: ${prop} - ${pos[index]}`;
+                raza.innerHTML =`Raza seleccionada: ${prop} - ${pos[index]}`;
 				dataImg(`https://dog.ceo/api/breed/${prop}/${pos[index]}/images/random`, breedImage);
 			});
 		});
+		await vSize();
 	}
 }
 
@@ -109,7 +139,12 @@ async function dataProp(url, breed_div){
 			dataElement('subBreed', result[raza], raza)
 		});
 	})
-}	
+}
+let cerrar = document.getElementById('cerrar');
+cerrar.addEventListener
+async function cerrar(){
+	
+}
 
 dataProp('https://dog.ceo/api/breeds/list/all', 'breed');
 }())

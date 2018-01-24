@@ -1,29 +1,51 @@
-h1 {
+/** { outline: 2px dotted red } 
+* * { outline: 2px dotted green }  
+* * * { outline: 2px dotted orange }  
+* * * * { outline: 2px dotted blue }  
+* * * * * { outline: 1px solid red }  
+* * * * * * { outline: 1px solid green }  
+* * * * * * * { outline: 1px solid orange }  
+* * * * * * * * { outline: 1px solid blue }*/
+
+*{
+	margin: 0;
+ 	 padding: 0;
+ 	 border: 0;
+ }
+html{
+	font-size: 16px;
 	font-family: inherit;
-    font-weight: 500;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+body{
+	font-family: 'Montserrat';
 }
 header{
 	background-color: white;
+	padding-left: 5px;
 }
-header h1{
+header p{
 	display: inline-block;
-	padding-right: 25px;
+	font-size: 2rem;
+	font-family: inherit;
+    font-weight: 500;
 }
 header img{
 	vertical-align: middle;
-	width: 100px;
+	width: 60px;
 }
 .breed{
-	width: 30%;
+	width: 90%;
+	max-height: 80vh;
 	padding: 2%;
+	margin: 0 auto;
 	background-color: rgba(165, 184, 247, 0.5);
-	display: inline-block;
-	max-height: 450px;
-    overflow: scroll;
-	
+	/*max-height: 450px;*/
+    overflow-y: scroll;
 }
 .breed p, .subBreed p {
-	display: inline-block;
 	padding-right: 10px;
 	font-family: monospace;
     font-size: 1.2em;
@@ -31,25 +53,58 @@ header img{
 .subBreed{
 	padding: 2%;
 	background-color: rgba(165, 184, 247, 0.5);
-	
+	max-height: 75vh;
+}
+.vh-20{
+	/*min-height: 16vh;*/
+	max-height: 16vh;
+	overflow-y: scroll;
+}
+.subBreed p{
+	display: inline-block;
 }
 .breedImg{
 	padding: 2%;
 	background-color: rgba(165, 184, 247, 0.5);
     text-align: center;
+	max-height: 85vh;
 	/*display: inline-block;*/
 }
 .breedImg p{
 	display:block;
 }
 #imageDog{
-    max-width: 99%;
-    max-height: 300px;
+   max-width: 99%;
+   max-height: 70vh;
+   /*min-height: 44vh;*/
+}
+#cerrar{
+	position:relative;
+	/*top: 30px;
+	right: 30px;*/
 }
 .fRight{
-	float: right;
-	width: 62%;
+	display: none;
+	width: 90%;
+	max-height: 85vh;
+	min-height: 85vh;
+	background-color: rgba(165, 184, 247, 0.5);
 }
 #contenedor{
 	background-size: cover;
+}
+/*Media Queries */
+
+@media screen and (min-width:576px) {
+	.fRight{
+		display:inline-block;
+		width: 60%;
+		float: right;
+		margin: 0 2%
+	}
+	.breed{
+		width: 28%;
+		display: inline-block;
+		margin: 0 2%		
+	}
 }
