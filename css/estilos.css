@@ -46,7 +46,8 @@ nav, .fondo_G{
 }
 .iconTag img{
 	display: inline;
-	width: 15%;
+	/*width: 15%;*/
+	max-height: 9vh;
 }
 .iconTag p{
 	display: inline;
